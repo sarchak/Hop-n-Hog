@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :address, :phone_number, :cuisine, :website, :city, :zipcode, :state, :description, :email, :password, :password_confirmation, :remember_me
+  has_many :menus;
 end
 # == Schema Information
 #

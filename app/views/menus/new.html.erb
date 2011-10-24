@@ -1,0 +1,9 @@
+<%= form_for @menu do |f| %>
+	<div> <%= f.label :starter %> </div>
+	<div> <%= f.text_field  :starter %> </div>
+	<div> <%= f.label :main_course %> </div>
+	<div> <%= f.text_area  :main_course %> </div>
+	<div> <%= f.label :desserts %> </div>
+	<div> <%= f.text_field  :desserts %> </div>
+	<%= f.submit "Create"%>
+<% end %>
