@@ -10,18 +10,20 @@
 	<!-- Date: 2011-09-21 -->
 </head>
 <body>
-  <% @restaurant.each do |rest|%>
+  <h1> Welcome <%= current_restaurant.email %> </h1>
+  <h2> What's spl for today : <%= current_restaurant.name %> </h2>
+  
   	<p>
-  		<b>Name : <%= rest.name %></b> <br>
-		<b>Email : <%= rest.email %></b><br>
-		<b>Address : <%= rest.address %></b><br>
-		<b>Phone_number : <%= rest.phone_number%> </b><br>
-		<b>Type : <%= rest.cuisine%> </b><br>
-		<b>City : <%= rest.city %> </b><br>
-		<b>Zipcode : <%= rest.zipcode%> </b><br>
-		<b>State   : <%= rest.state %> </b><br>
+  		<b>Name : <%= @restaurant.name %></b> <br>
+		<b>Email : <%= @restaurant.email %></b><br>
+		<b>Address : <%= @restaurant.address %></b><br>
+		<b>Phone_number : <%= @restaurant.phone_number%> </b><br>
+		<b>Type : <%= @restaurant.cuisine%> </b><br>
+		<b>City : <%= @restaurant.city %> </b><br>
+		<b>Zipcode : <%= @restaurant.zipcode%> </b><br>
+		<b>State   : <%= @restaurant.state %> </b><br>
 		<br> ---------------<br>
   	</p>
-  <% end%>
+
 </body>
 </html>

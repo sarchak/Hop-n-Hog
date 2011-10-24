@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurant = Restaurant.all
+    @restaurant = Restaurant.find_by_email(current_restaurant.email)
   end
   def new
     @restaurant = Restaurant.new
