@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurant = Restaurant.find_by_email(current_restaurant.email)
+    if restaurant_signed_in?
+      @restaurant = Restaurant.find_by_email(current_restaurant.email)
+    end
   end
   def new
     @restaurant = Restaurant.new

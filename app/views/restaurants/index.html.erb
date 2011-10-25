@@ -10,21 +10,24 @@
 	<!-- Date: 2011-09-21 -->
 </head>
 <body>
-  <h1> Welcome <%= current_restaurant.email %> </h1>
-  <h2> What's spl for today : <%= current_restaurant.name %> </h2>
-  <h2> What's spl for today : <%= current_restaurant.id %> </h2>
-  	<p>
-  		<b>Name : <%= @restaurant.name %></b> <br>
-		<b>Email : <%= @restaurant.email %></b><br>
-		<b>Address : <%= @restaurant.address %></b><br>
-		<b>Phone_number : <%= @restaurant.phone_number%> </b><br>
-		<b>Type : <%= @restaurant.cuisine%> </b><br>
-		<b>City : <%= @restaurant.city %> </b><br>
-		<b>Zipcode : <%= @restaurant.zipcode%> </b><br>
-		<b>State   : <%= @restaurant.state %> </b><br>
-		<br> ---------------<br>
-  	</p>
-   
+  <% if restaurant_signed_in? %>
+	  <h1> Welcome <%= current_restaurant.email %> </h1>
+	  <h2> What's spl for today : <%= current_restaurant.name %> </h2>
+	  <h2> What's spl for today : <%= current_restaurant.id %> </h2>
+	  	<p>
+	  		<b>Name : <%= @restaurant.name %></b> <br>
+			<b>Email : <%= @restaurant.email %></b><br>
+			<b>Address : <%= @restaurant.address %></b><br>
+			<b>Phone_number : <%= @restaurant.phone_number%> </b><br>
+			<b>Type : <%= @restaurant.cuisine%> </b><br>
+			<b>City : <%= @restaurant.city %> </b><br>
+			<b>Zipcode : <%= @restaurant.zipcode%> </b><br>
+			<b>State   : <%= @restaurant.state %> </b><br>
+			<br> ---------------<br>
+	  	</p>
+   <% else %>
+   		<p> You are not logged in <p>
+   <% end %>
 
 	<form method="get" action="/menus/new">
 	<p><button>Create Menu</button><p>
