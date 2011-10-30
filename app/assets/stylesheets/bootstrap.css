@@ -14,6 +14,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #DCEAF4;
 }
 h1,
 h2,
@@ -207,6 +208,7 @@ body {
   clear: both;
 }
 .container-fluid {
+  background-color: #DCEAF4;
   position: relative;
   min-width: 940px;
   padding-left: 20px;
@@ -223,7 +225,7 @@ body {
   clear: both;
 }
 .container-fluid > .sidebar {
-  float: left;
+  float: right;
   width: 220px;
 }
 .container-fluid > .content {

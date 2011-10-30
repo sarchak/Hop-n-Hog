@@ -1,16 +1,27 @@
+<header > 
+	<div class=page-header>
+		<h1>First menu page</h1>
+	</div>
+</header>
+<div class = "container-fluid">
+	<div class = "sidebar">
+		<h3>whats hot</h3>
+	</div>
 <% @menu.each do |m| %>
 	<% if m.starter %>
-	<div class = "container-fluid">
+
 		<div class = "content">
-	<div> <%= "Starter : " + m.starter %> </div>
-	<% end %>
-	<% if m.main_course %>
-	<div> <%= "Main Course: " + m.main_course %> </div>
-	<% end %>
-	<% if m.desserts %>
-	<div> <%= "Desserts: " + m.desserts %> </div>
-	<% end%>
-	</div>
-	</div>
-	---------------------------------------------
+			<div> <%= "Starter : " + m.starter %> </div>
+			<% end %>
+			<% if m.main_course %>
+			<div> <%= "Main Course: " + m.main_course %> </div>
+			<% end %>
+			<% if m.desserts %>
+			<div> <%= "Desserts: " + m.desserts %> </div>
+			<% end%>
+			---------------------------------------------
+
+	
 <% end %>
+	</div>
+</div>
