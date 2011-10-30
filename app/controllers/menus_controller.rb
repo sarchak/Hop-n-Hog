@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
   
   def index
-    @menu = Menu.all
+    @menu = Menu.find(:all, :order=>"created_at desc",:limit=>20)
+   
   end
   def new
     @menu = Menu.new

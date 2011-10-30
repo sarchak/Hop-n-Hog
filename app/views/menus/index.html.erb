@@ -1,0 +1,16 @@
+<% @menu.each do |m| %>
+	<% if m.starter %>
+	<div class = "container-fluid">
+		<div class = "content">
+	<div> <%= "Starter : " + m.starter %> </div>
+	<% end %>
+	<% if m.main_course %>
+	<div> <%= "Main Course: " + m.main_course %> </div>
+	<% end %>
+	<% if m.desserts %>
+	<div> <%= "Desserts: " + m.desserts %> </div>
+	<% end%>
+	</div>
+	</div>
+	---------------------------------------------
+<% end %>
