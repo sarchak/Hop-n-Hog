@@ -1,3 +1,4 @@
+
 <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar" data-dropdown="dropdown" >
       <div class="topbar-inner">
@@ -39,22 +40,45 @@
     </div><!-- /topbar -->
 </div><!-- /topbar-wrapper -->
 
-<div class="container">
-		<% @menu.each do |m| %>
-			<% if m.starter %>
 
-		
-					<div> <%= "Starter : " + m.starter %> </div>
-					<% end %>
-					<% if m.main_course %>
-					<div> <%= "Main Course: " + m.main_course %> </div>
-					<% end %>
-					<% if m.desserts %>
-					<div> <%= "Desserts: " + m.desserts %> </div>
-					<% end%>
-					---------------------------------------------
 
-	
-		<% end %>
-</div>
+
+<div class="container-fluid">
+	<div class="sidebar">
+		<h6> What's Hot!! <h6>
+		<ul >
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+			<li>Link1</li>
+		</ul>
+	</div>
+	<div class="content">
+		<div class="page-header">
+          <h3>Today's Spl</small></h3>   
+		</div>
+		<ul id="menus">
+				<% @menu.each do |m| %>
+					<li>
+							<% if m.starter %>
+							<div> <%= "Starter : " + m.starter %> </div>
+							<% end %>
+							<% if m.main_course %>
+							<div> <%= "Main Course: " + m.main_course %> </div>
+							<% end %>
+							<% if m.desserts %>
+							<div> <%= "Desserts: " + m.desserts %> </div>
+							<% end%>
+					</li>	
+				<% end %>
+		</ul>
+    </div> <!-- content -->
+</div> <!-- container-fluid -->
 
