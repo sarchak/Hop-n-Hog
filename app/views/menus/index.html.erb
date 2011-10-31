@@ -45,8 +45,10 @@
 
 <div class="container-fluid">
 	<div class="sidebar">
-		<h6> What's Hot!! <h6>
-		<ul >
+		<div class="page-header">
+          <h3>What's Hot!!</small></h3>   
+		</div>
+		<ul>
 			<li>Link1</li>
 			<li>Link1</li>
 			<li>Link1</li>
@@ -68,7 +70,7 @@
 				<% @menu.each do |m| %>
 					<li>
 							<% if m.starter %>
-							<div> <%= "Starter : " + m.starter %> </div>
+							<div> <%= "Starter : " + m.starter  %> </div>
 							<% end %>
 							<% if m.main_course %>
 							<div> <%= "Main Course: " + m.main_course %> </div>
@@ -80,5 +82,8 @@
 				<% end %>
 		</ul>
     </div> <!-- content -->
+    <footer>
+       <p>&copy; HopnHog 2011</p>
+     </footer>
 </div> <!-- container-fluid -->
 
