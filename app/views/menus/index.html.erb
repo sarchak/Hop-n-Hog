@@ -1,27 +1,60 @@
-<header > 
-	<div class=page-header>
-		<h1>First menu page</h1>
-	</div>
-</header>
-<div class = "container-fluid">
-	<div class = "sidebar">
-		<h3>whats hot</h3>
-	</div>
-<% @menu.each do |m| %>
-	<% if m.starter %>
+<div class="topbar-wrapper" style="z-index: 5;">
+    <div class="topbar" data-dropdown="dropdown" >
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a href="#">Hop-n-Hog</a></h3>
 
-		<div class = "content">
-			<div> <%= "Starter : " + m.starter %> </div>
-			<% end %>
-			<% if m.main_course %>
-			<div> <%= "Main Course: " + m.main_course %> </div>
-			<% end %>
-			<% if m.desserts %>
-			<div> <%= "Desserts: " + m.desserts %> </div>
-			<% end%>
-			---------------------------------------------
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Favourites</a></li>
+ 
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Cuisine</a>
+
+              <ul class="dropdown-menu">
+                <li><a href="#">Indian</a></li>
+                <li><a href="#">Chinese</a></li>
+                <li><a href="#">American</a></li>
+              </ul>
+            </li>
+
+          </ul>
+          <form class="pull-left" action="">
+            <input type="text" placeholder="Search" />
+          </form>
+          <ul class="nav secondary-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Logout</a>
+              <ul class="dropdown-menu">
+
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div><!-- /topbar-inner -->
+    </div><!-- /topbar -->
+</div><!-- /topbar-wrapper -->
+
+<div class="container">
+		<% @menu.each do |m| %>
+			<% if m.starter %>
+
+		
+					<div> <%= "Starter : " + m.starter %> </div>
+					<% end %>
+					<% if m.main_course %>
+					<div> <%= "Main Course: " + m.main_course %> </div>
+					<% end %>
+					<% if m.desserts %>
+					<div> <%= "Desserts: " + m.desserts %> </div>
+					<% end%>
+					---------------------------------------------
 
 	
-<% end %>
-	</div>
+		<% end %>
 </div>
+

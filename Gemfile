@@ -24,7 +24,7 @@ gem 'populator'
 gem 'faker'
 # Use unicorn as the web server
 # gem 'unicorn'
-
+gem 'twitter-bootstrap-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
