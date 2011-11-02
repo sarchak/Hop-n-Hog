@@ -19,5 +19,6 @@ end
 #  description   :text
 #  created_at    :datetime
 #  updated_at    :datetime
+#  cuisines      :string(255)
 #
 

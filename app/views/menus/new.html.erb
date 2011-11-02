@@ -2,8 +2,14 @@
 	<div> <%= f.label :starter %> </div>
 	<div> <%= f.text_field  :starter %> </div>
 	<div> <%= f.label :main_course %> </div>
-	<div> <%= f.text_area  :main_course %> </div>
+	<div> <%= f.text_area  :main_course, :rows=>5 %> </div>
 	<div> <%= f.label :desserts %> </div>
 	<div> <%= f.text_field  :desserts %> </div>
+	<div> <%= f.label :cuisines %> </div>
+	<div> <%= f.select :cuisines, options_for_select=["Indian", "Chinese","American"] %> </div>
+	<div> <%= f.label :special %> </div>
+	<div> <%= f.text_field  :special %> </div>
+	<div> <%= f.label :description %> </div>
+	<div> <%= f.text_area  :description, :rows=>5 %> </div>
 	<%= f.submit "Create"%>
 <% end %>

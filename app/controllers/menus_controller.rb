@@ -10,6 +10,7 @@ class MenusController < ApplicationController
   def create
     @menu = current_restaurant.menus.build(params[:menu])  
     @menu.save
+    redirect_to "/menus/"
   end
   def show
     @menu = Menu.find(params[:id])

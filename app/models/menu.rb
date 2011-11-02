@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  attr_accessible :starter, :main_course, :desserts, :special, :discount, :restaurant_id, :description
+  attr_accessible :starter, :main_course, :desserts, :special, :discount, :restaurant_id, :description, :cuisines
   belongs_to :restaurant
 end
 # == Schema Information
@@ -16,5 +16,6 @@ end
 #  description   :text
 #  created_at    :datetime
 #  updated_at    :datetime
+#  cuisines      :string(255)
 #
 
