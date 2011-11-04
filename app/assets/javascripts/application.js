@@ -11,3 +11,15 @@
 
 
 
+$(document).ready(function(){
+
+$("input[name='rdio']").click(function(){
+
+    if ($("input[name='rdio']:checked").val() == 'a')
+        $("#test").append("<div>a</div>");
+    else if ($("input[name='rdio']:checked").val() == 'b')
+        $("#test").append("<div>b</div>");
+    else
+        $("#test").append("<div>c</div>");
+});
+});
