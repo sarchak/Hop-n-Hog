@@ -1,29 +1,15 @@
-<script>
-$("button:first").click(function () {
-	alert("Whats going on??");
-update($("span:first"));
-});
-$("button:last").click(function () {
-$("button:first").trigger('click');
-</script>
+
 <div class="container">
 	<div class="content">
 	<h2>Sign up</h2>
 
-	<input type="radio" name="rdio" value="a" checked="checked" />
-	<input type="radio" name="rdio" value="b" />
-	<input type="radio" name="rdio" value="c" />
+	<input type="radio" name="rdio" value="Normal" checked="checked" > Normal User </input> <br>
+	<input type="radio" name="rdio" value="Restaurant" > Restaurant Owner </input>
+
 
 	<br />
-	<body>
-	  <button>Button #1</button>
-	<button>Button #2</button>
-	<div><span>0</span> button #1 clicks.</div>
+	<div id="test"> Selected valued should get appended after this </div> </br>
 
-	<div><span>0</span> button #2 clicks.</div>
-
-
-	<div id="test">Is it working??</div>
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 	  <%= devise_error_messages! %>
 

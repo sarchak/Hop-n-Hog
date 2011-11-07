@@ -13,7 +13,7 @@
               <a href="#" class="dropdown-toggle">Cuisine</a>
 
               <ul class="dropdown-menu">
-                <li><a href="#">Indian</a></li>
+                <li class="selected"><a href="#">Indian</a></li>
                 <li><a href="#">Chinese</a></li>
                 <li><a href="#">American</a></li>
               </ul>
@@ -63,26 +63,14 @@
 		</ul>
 	</div>
 	<div class="content">
-		<div class="page-header">
+		<div class="page-header" id="test" data-id="balls to u">
           <h3>Today's Spl</small></h3>   
 		</div>
-		<ul id="menus">
-				<% @menu.each do |m| %>
-					<li>
-							<% if m.starter %>
-							<div> <%= "Starter : " + m.starter  %> </div>
-							<% end %>
-							<% if m.main_course %>
-							<div> <%= "Main Course: " + m.main_course %> </div>
-							<% end %>
-							<% if m.desserts %>
-							<div> <%= "Desserts: " + m.desserts %> </div>
-							<% end%>
-							<% if m.cuisines %>
-							<div> <%= "Type of Cuisine: " + m.cuisines %> </div>
-							<% end%>
-					</li>	
-				<% end %>
+		<ul id="menus" data-id="<%= @menu.first.id %>" data-time="<%= @menu.first.created_at.to_i%>">
+			
+				
+			 <%= render @menu %>
+
 		</ul>
     </div> <!-- content -->
     <footer>

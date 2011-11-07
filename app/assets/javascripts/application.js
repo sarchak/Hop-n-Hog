@@ -15,11 +15,33 @@ $(document).ready(function(){
 
 $("input[name='rdio']").click(function(){
 
-    if ($("input[name='rdio']:checked").val() == 'a')
-        $("#test").append("<div>a</div>");
-    else if ($("input[name='rdio']:checked").val() == 'b')
-        $("#test").append("<div>b</div>");
+    if ($("input[name='rdio']:checked").val() == 'Normal')
+        $("#test").append("<div>Normal User</div>");
+    else if ($("input[name='rdio']:checked").val() == 'Restaurant')
+        $("#test").append("<div>Restaurant Owner</div>");
     else
         $("#test").append("<div>c</div>");
 });
 });
+
+$(document).ready(function(){
+
+    $('ul.dropdown-menu li').click(function(e) {
+		var ind = $('ul.dropdown-menu li').index(this);
+		alert($('ul.dropdown-menu li:eq('+ind+')').text())
+	});
+});
+
+$(function(){
+	if($("#menus").length > 0){
+		setTimeout(updateMenus, 10000)
+	}
+});
+
+function updateMenus(){
+	var menu_id = $("#menus").data('id');
+	var after= $("#menus").data('time');
+	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after);
+	setTimeout(updateMenus, 10000);
+	
+}
