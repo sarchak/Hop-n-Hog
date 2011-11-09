@@ -10,7 +10,7 @@
 //= require twitter/bootstrap
 
 
-
+var curr;
 $(document).ready(function(){
 
 $("input[name='rdio']").click(function(){
@@ -28,7 +28,17 @@ $(document).ready(function(){
 
     $('ul.dropdown-menu li').click(function(e) {
 		var ind = $('ul.dropdown-menu li').index(this);
-		alert($('ul.dropdown-menu li:eq('+ind+')').text())
+		var cuisines = $('ul.dropdown-menu li:eq('+ind+')').text();
+		curr = cuisines;
+
+		$.ajax({
+		  type: "GET",
+		  url: '/menus?cuisines='+cuisines,
+		  success: function(data) {
+			var newmenu = $(data).find('#menus');
+			$('#menus').replaceWith(newmenu);
+		  }
+		});
 	});
 });
 
@@ -41,7 +51,8 @@ $(function(){
 function updateMenus(){
 	var menu_id = $("#menus").data('id');
 	var after= $("#menus").data('time');
-	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after);
+	
+	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr);
 	setTimeout(updateMenus, 10000);
 	
 }

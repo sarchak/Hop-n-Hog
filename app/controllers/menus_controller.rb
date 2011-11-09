@@ -2,8 +2,11 @@ class MenusController < ApplicationController
 
   def index
       #@menu = Menu.find(:all, :order=>"created_at desc",:limit=>20)
-      @menu = Menu.where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc');
-
+      if(params[:cuisines] == "All" or !params[:cuisines])
+        @menu = Menu.where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc');
+      else
+        @menu = Menu.where("cuisines == ? and created_at > ?", params[:cuisines],Time.at(params[:after].to_i+1)).order('created_at desc');
+      end
   end
   def new
     @menu = Menu.new
