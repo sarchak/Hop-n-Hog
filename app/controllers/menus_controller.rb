@@ -3,9 +3,9 @@ class MenusController < ApplicationController
   def index
       #@menu = Menu.find(:all, :order=>"created_at desc",:limit=>20)
       if(params[:cuisines] == "All" or !params[:cuisines])
-        @menu = Menu.where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc');
+        @menu = Menu.where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
       else
-        @menu = Menu.where("cuisines == ? and created_at > ?", params[:cuisines],Time.at(params[:after].to_i+1)).order('created_at desc');
+        @menu = Menu.where("cuisines == ? and created_at > ?", params[:cuisines],Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
       end
   end
   def new
