@@ -49,28 +49,22 @@
 		<div class="page-header">
           <h3>What's Hot!!</small></h3>   
 		</div>
-		<ul>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-			<li>Link1</li>
-		</ul>
+		<div id="My">
+			HEre it comes
+			<div id = "Mymenu">
+				Should be replaced
+			</div>
+		</div>
 	</div>
 	<div class="content">
 		<div class="page-header" id="test" data-id="test">
           <h3>Today's Spl</small></h3>   
 		</div>
+	
 		<ul id="menus" data-id="<%= @menu.first.id %>" data-time="<%= @menu.first.created_at.to_i%>">
 			
-				
-			 <%= render @menu %>
+			<div><li id="dishes"> </li> <div>	
+			
 
 		</ul>
     </div> <!-- content -->

@@ -10,7 +10,7 @@
 //= require twitter/bootstrap
 
 
-var curr;
+var curr="All";
 var globlongitude;
 var globlatitude;
 var address;
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		  success: function(data) {
 			var obj = data["ResultSet"]["Results"];
 			address =  obj[0]["line1"]+" "+obj[0]["city"]+" "+obj[0]["state"];
-			$.getScript("/menus.js?address="+address);
+			$.getScript("/menus.js?address="+address+"&cuisines="+curr);
 		  }
 		});
 	  
@@ -73,23 +73,25 @@ $(document).ready(function(){
 
     $('ul.dropdown-menu li').click(function(e) {
 		var ind = $('ul.dropdown-menu li').index(this);
-		var cuisines = $('ul.dropdown-menu li:eq('+ind+')').text();
-		curr = cuisines;
-
-		$.ajax({
+		var curr = $('ul.dropdown-menu li:eq('+ind+')').text();
+		var menu_id = $("#menus").data('id');
+		var after= $("#menus").data('time');
+		/*$.ajax({
 		  type: "GET",
-		  url: '/menus?cuisines='+cuisines,
+		  url: "/menus/sidebar.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr+"&address="+address,
 		  success: function(data) {
-			var newmenu = $(data).find('#menus');
-			$('#menus').replaceWith(newmenu);
+			var newmenu = $(data).find('#Mymenu');
+			$('#Mymenu').empty()
+			$('#Mymenu').append(newmenu);
 		  }
-		});
+		});*/
+		$.getScript("/menus/sidebar.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr+"&address="+address);
 	});
 });
 
 $(function(){
 	if($("#menus").length > 0){
-		setTimeout(updateMenus, 10000)
+		setTimeout(updateMenus, 30000)
 	}
 });
 
@@ -97,6 +99,6 @@ function updateMenus(){
 	var menu_id = $("#menus").data('id');
 	var after= $("#menus").data('time');
 	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr+"&address="+address);
-	setTimeout(updateMenus, 10000);
+	setTimeout(updateMenus, 30000);
 	
 }

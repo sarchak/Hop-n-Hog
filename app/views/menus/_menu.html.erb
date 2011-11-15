@@ -1,9 +1,9 @@
 
-	<li div="menus" data-id="<%= menu.id %>" data-time="<%= menu.created_at.to_i %>">
+	<li>
 			<% if menu.starter %>
 			<div> <%= "Starter : " + menu.starter  %> </div>
-			<div> <%= "ID : " + menu.id.to_s  %> </div>
-			<div> <%= "created at : " + menu.created_at.to_s %> </div>
+			<div> <%= "Restaurant ID : " + menu.restaurant_id.to_s  %> </div>
+			<div> <%= "created at : " + menu.created_at.to_i.to_s %> </div>
 			<% end %>
 			<% if menu.main_course %>
 			<div> <%= "Main Course: " + menu.main_course %> </div>

@@ -1,11 +1,9 @@
-	
+
 <% unless @menu.empty? %>
-    //alert("Got"+<%= @menu.last.id %>)
 	$('#menus').prepend("<%= escape_javascript(raw render(@menu))%>");
-	//alert($('#menus').data("id"))
-	$('#menus').data("id", <%= @menu.last.id %>)
-	$('#menus').data("time", <%= @menu.last.created_at.to_i %>)
+	$('#menus').data("id", <%= @menu.first.id %>)
+	$('#menus').data("time", <%= @menu.first.created_at.to_i %>)
 	var menu_id = $("#menus").attr('data-id');
 	var after= $("#menus").attr('data-time');
-	//alert(menu_id+":"+after)
+
 <% end %>

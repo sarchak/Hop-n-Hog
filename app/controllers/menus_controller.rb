@@ -1,16 +1,33 @@
 class MenusController < ApplicationController
 
   def index
-      @currloc = "630 park view drive santa clara"
+     
       if(params[:address].present?)
         @currloc = params[:address]
+      else
+         @currloc = "630 park view drive santa clara"
       end
-      if(params[:cuisines] == "All" or !params[:cuisines])
+      if(params[:cuisines] == "All" or !params[:cuisines].present?)
         @menu = Menu.near(@currloc).where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
+
       else
         @menu = Menu.near(@currloc).where("cuisines == ? and created_at > ?", params[:cuisines],Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
         #@menu = Menu.where("cuisines == ? and created_at > ?", params[:cuisines],Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
+        if(@menu.empty?)
+          @menu=Menu.near(@currloc).where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);
+          #@menu=Menu.where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);   
+        end
       end
+  end
+  def sidebar
+    if(params[:address].present?)
+      @currloc = params[:address]
+    else
+       @currloc = "630 park view drive santa clara"
+    end
+    if(params[:cuisines].present?)
+      @menu=Menu.near(@currloc).where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);
+    end
   end
   def new
     @menu = Menu.new

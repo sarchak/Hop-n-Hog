@@ -1,0 +1,5 @@
+
+<% unless @menu.empty? %>
+	$('#Mymenu').empty();
+	$('#Mymenu').prepend("<%= escape_javascript(raw render(@menu))%>");
+<% end %>
