@@ -11,18 +11,63 @@
 
 
 var curr;
+var globlongitude;
+var globlatitude;
+var address;
 $(document).ready(function(){
 
-$("input[name='rdio']").click(function(){
+	   if(navigator.geolocation){
+	      // timeout at 60000 milliseconds (60 seconds)
+	      var options = {timeout:60000};
+	      navigator.geolocation.getCurrentPosition(showLocation, 
+	                                               errorHandler,
+	                                               options);
+	   }else{
+	      alert("Sorry, browser does not support geolocation!");
+	   }
+	function showLocation(position) {
+	 
+	  var latitude = position.coords.latitude;
+	  var longitude = position.coords.longitude;
 
-    if ($("input[name='rdio']:checked").val() == 'Normal')
-        $("#test").append("<div>Normal User</div>");
-    else if ($("input[name='rdio']:checked").val() == 'Restaurant')
-        $("#test").append("<div>Restaurant Owner</div>");
-    else
-        $("#test").append("<div>c</div>");
-});
-});
+	  var custurl = 'http://where.yahooapis.com/geocode?location='+latitude+'+'+longitude+'&flags=J&gflags=R&appid=yourappid';
+
+      	$.ajax({
+		  type: "GET",
+		  url: custurl,
+		  success: function(data) {
+			var obj = data["ResultSet"]["Results"];
+			address =  obj[0]["line1"]+" "+obj[0]["city"]+" "+obj[0]["state"];
+			$.getScript("/menus.js?address="+address);
+		  }
+		});
+	  
+	}
+
+	function errorHandler(err) {
+	  if(err.code == 1) {
+	    alert("Error: Access is denied!");
+	  }else if( err.code == 2) {
+	    alert("Error: Position is unavailable!");
+	  }
+	}
+	function getLocation(){
+	   if(navigator.geolocation){
+	      // timeout at 60000 milliseconds (60 seconds)
+	      var options = {timeout:60000};
+	      navigator.geolocation.getCurrentPosition(showLocation, 
+	                                               errorHandler,
+	                                               options);
+	   }else{
+	      alert("Sorry, browser does not support geolocation!");
+	   }
+	}
+
+}); // on ready ends
+
+
+
+
 
 $(document).ready(function(){
 
@@ -51,8 +96,7 @@ $(function(){
 function updateMenus(){
 	var menu_id = $("#menus").data('id');
 	var after= $("#menus").data('time');
-	
-	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr);
+	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr+"&address="+address);
 	setTimeout(updateMenus, 10000);
 	
 }

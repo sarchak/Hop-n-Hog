@@ -20,5 +20,8 @@ end
 #  created_at    :datetime
 #  updated_at    :datetime
 #  cuisines      :string(255)
+#  address       :string(255)
+#  latitude      :float
+#  longitude     :float
 #
 

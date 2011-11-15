@@ -1,6 +1,10 @@
 class Menu < ActiveRecord::Base
-  attr_accessible :starter, :main_course, :desserts, :special, :discount, :restaurant_id, :description, :cuisines
+  attr_accessible :starter, :main_course, :desserts, :special, :discount, :restaurant_id, :description, :cuisines, :address,:latitude, :longitude
+  
   belongs_to :restaurant
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+  
 end
 # == Schema Information
 #
@@ -17,5 +21,8 @@ end
 #  created_at    :datetime
 #  updated_at    :datetime
 #  cuisines      :string(255)
+#  address       :string(255)
+#  latitude      :float
+#  longitude     :float
 #
 
