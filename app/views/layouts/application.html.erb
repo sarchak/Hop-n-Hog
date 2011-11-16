@@ -7,6 +7,8 @@
   <%= stylesheet_link_tag    "bootstrap" %>
 
   <%= javascript_include_tag "application" %>
+  <%= yield :javascript_includes %>
+
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
