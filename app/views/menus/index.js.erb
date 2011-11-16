@@ -1,6 +1,9 @@
 
 <% unless @menu.empty? %>
+
 	$('#menus').prepend("<%= escape_javascript(raw render(@menu))%>");
+
+
 	$('#menus').data("id", <%= @menu.first.id %>)
 	$('#menus').data("time", <%= @menu.first.created_at.to_i %>)
 	var menu_id = $("#menus").attr('data-id');

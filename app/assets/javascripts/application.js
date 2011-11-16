@@ -38,7 +38,7 @@ $(document).ready(function(){
 		  success: function(data) {
 			var obj = data["ResultSet"]["Results"];
 			address =  obj[0]["line1"]+" "+obj[0]["city"]+" "+obj[0]["state"];
-			$.getScript("/menus.js?address="+address+"&cuisines="+curr);
+			$.getScript("/menus.js?address="+address);
 		  }
 		});
 	  
@@ -98,7 +98,19 @@ $(function(){
 function updateMenus(){
 	var menu_id = $("#menus").data('id');
 	var after= $("#menus").data('time');
-	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&cuisines="+curr+"&address="+address);
+	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&address="+address);
 	setTimeout(updateMenus, 30000);
 	
 }
+
+
+
+$(document).ready(function(){
+
+	$("#menus li").live("click", function(){
+		var ind = $(this).index();
+	   	//alert(" Hi, I'm element " + $(this).index() );
+		
+		
+	});
+})

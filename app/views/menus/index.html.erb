@@ -26,12 +26,21 @@
           </form>
           <ul class="nav secondary-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Logout</a>
+              <a href="#" class="dropdown-toggle">
+				<% if user_signed_in? %>
+					Sign Out
+				<% else %>
+					Sign In
+				<% end %>
+				</a>
               <ul class="dropdown-menu">
 
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout</a></li>
-
+				<% if user_signed_in? %>
+                	<li><a href="/users/sign_out">Sign Out</a></li>
+				<% else %>
+						<li><a href="/users/sign_in">Sign In</a></li>
+				<% end %>
               </ul>
             </li>
           </ul>
@@ -60,12 +69,9 @@
 		<div class="page-header" id="test" data-id="test">
           <h3>Today's Spl</small></h3>   
 		</div>
-	
-		<ul id="menus" data-id="<%= @menu.first.id %>" data-time="<%= @menu.first.created_at.to_i%>">
-			
-			<div><li id="dishes"> </li> <div>	
-			
 
+		<ul id="menus" data-id="<%= @menu.first.id %>" data-time="<%= @menu.first.created_at.to_i%>">		
+	
 		</ul>
     </div> <!-- content -->
     <footer>
