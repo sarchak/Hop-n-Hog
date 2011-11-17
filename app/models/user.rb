@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  has_many :ratings
+  has_many :rated_menus, :through => :ratings, :source => :menus
 end
 # == Schema Information
 #

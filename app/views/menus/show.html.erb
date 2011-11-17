@@ -1,34 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
 
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Display Menu</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Shrikar Archak">
-	<!-- Date: 2011-09-20 -->
-</head>
-<body>
-   <div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>">
-	<p>
-		<b> Starter : <%= @menu.starter %></b><br>
-		<b> Id      : <%= @menu.id %></b><br>
-		<b> Created_at : <%= @menu.created_at.to_i %></b><br>
-	</p>
-	<p>
-		<b> Main Course : <%= @menu.main_course %> </b><br>
-	</p>
-	<p>
-		<b> Desserts: <%= @menu.desserts %></b><br>
-	</p>
-	<p>
-		<b> Menu id : <%= @menu.id %></b><br>
-	</p>
-	<p>
-		<b> Restaurant id : <%= @menu.restaurant_id %></b><br>
-	</p>
-	<a href = /menus/<%= @menu.id %>/edit >EDIT </a>
-	</div>
-</body>
-</html>
+<div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>">
+<p>
+	<b> Starter : <%= @menu.starter %></b><br>
+	<b> Id      : <%= @menu.id %></b><br>
+	<b> Created_at : <%= @menu.created_at.to_i %></b><br>
+</p>
+<p>
+	<b> Main Course : <%= @menu.main_course %> </b><br>
+</p>
+<p>
+	<b> Desserts: <%= @menu.desserts %></b><br>
+</p>
+<p>
+	<b> Menu id : <%= @menu.id %></b><br>
+</p>
+<p>
+	<b> Restaurant id : <%= @menu.restaurant_id %></b><br>
+</p>
+<a href = /menus/<%= @menu.id %>/edit >EDIT </a>
+</div>
+<%= form_for(rating_ballot, :html => { :class => 'rating_ballot' }) do |f| %>
+    <%= f.label("value_1", content_tag(:span, '1'), {:class=>"rating", :id=>"1"}) %>
+    <%= radio_button_tag("rating[value]", 1, current_user_rating == 1, :class => 'rating_button') %>
+    <%= f.label("value_2", content_tag(:span, '2'), {:class=>"rating", :id=>"2"}) %>
+    <%= radio_button_tag("rating[value]", 2, current_user_rating == 2, :class => 'rating_button') %>
+    <%= f.label("value_3", content_tag(:span, '3'), {:class=>"rating", :id=>"3"}) %>
+    <%= radio_button_tag("rating[value]", 3, current_user_rating == 3, :class => 'rating_button') %>
+    <%= f.label("value_4", content_tag(:span, '4'), {:class=>"rating", :id=>"4"}) %>
+    <%= radio_button_tag("rating[value]", 4, current_user_rating == 4, :class => 'rating_button') %>
+    <%= f.label("value_5", content_tag(:span, '5'), {:class=>"rating", :id=>"5"}) %>
+    <%= radio_button_tag("rating[value]", 5, current_user_rating == 5, :class => 'rating_button') %>
+
+    <%= hidden_field_tag("menu_id", @menu.id) %>
+    <%= f.submit :Submit %>
+<% end %>
+
+ Average Rating
+        <%= @menu.average_rating %>
+ Your Rating
+       <%= current_user_rating %>
+
+
+
