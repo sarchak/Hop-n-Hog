@@ -1,4 +1,6 @@
-
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "rating-ballot.js" %>
+<% end %>
 <div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>">
 <p>
 	<b> Starter : <%= @menu.starter %></b><br>
@@ -34,11 +36,12 @@
     <%= hidden_field_tag("menu_id", @menu.id) %>
     <%= f.submit :Submit %>
 <% end %>
-
- Average Rating
-        <%= @menu.average_rating %>
- Your Rating
-       <%= current_user_rating %>
-
-
+<section id="tables">
+<table class="bordered-table zebra-striped" width=200>
+	<thead><tr><th>Average Rating </th> <th> Your Rating </th> </thead>
+<% if !@rating.nil?%>
+	<%= render @rating %>
+<%end%>
+</tr></table>
+</section>
 
