@@ -4,7 +4,7 @@ Hopnhog::Application.routes.draw do
   devise_for :restaurants
   match '/menus/sidebar.js' => "menus#sidebar"
   resources :menus
-  
+  resources :ratings
   root :to => "menus#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
