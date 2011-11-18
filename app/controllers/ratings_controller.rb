@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   before_filter :authenticate_user!
-
+ 
       def create
               @menu = Menu.find_by_id(params[:menu_id])
               if current_user.id == @menu.id
@@ -16,7 +16,7 @@ class RatingsController < ApplicationController
                       end
                   end
               end
-          end
+      end
 
           def update
               @menu = Menu.find_by_id(params[:menu_id])
@@ -31,6 +31,19 @@ class RatingsController < ApplicationController
                       end
                   end
               end
+          end
+          def show
+            @rating  = Rating.order("value desc").limit(3);
+            @menu_id = Rating.select("menu_id").order("avg(value) desc").group("menu_id").limit(3);
+          end
+          def topn
+            @rating = Rating.order('value desc').limit(0);
+      
+            @menu = Menu.find_by_id(@rating.menu_id)
+            respond_to do |format|
+                format.html 
+                format.js
+            end
           end
   
 end

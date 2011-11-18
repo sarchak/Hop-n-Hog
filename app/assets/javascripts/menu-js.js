@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 $(function(){
 	if($("#menus").length > 0){
-		setTimeout(updateMenus, 30000)
+		setTimeout(updateMenus, 10000)
 	}
 });
 
@@ -91,7 +91,8 @@ function updateMenus(){
 	var menu_id = $("#menus").data('id');
 	var after= $("#menus").data('time');
 	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&address="+address);
-	setTimeout(updateMenus, 30000);
+	$.getScript("/ratings/show.js");
+	setTimeout(updateMenus, 10000);
 	
 }
 

@@ -24,6 +24,14 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
   end
+  def topn
+    @menu  = Rating.order('value desc').limit(1);
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
   def create
     @menu = current_restaurant.menus.build(params[:menu])  
     @test = Restaurant.find_by_email(restaurant_session[:email])

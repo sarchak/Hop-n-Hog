@@ -3,6 +3,7 @@ Hopnhog::Application.routes.draw do
 
   devise_for :restaurants
   match '/menus/sidebar.js' => "menus#sidebar"
+  match '/ratings/show.js'  => "ratings#show"
   resources :menus
   resources :ratings
   root :to => "menus#index"

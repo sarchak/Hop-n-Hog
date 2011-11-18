@@ -1,0 +1,6 @@
+
+<% unless @rating.empty? %>
+	$('#topn').empty();
+	$('#topn').prepend("<%= escape_javascript(render :partial => 'ratings/topn')%>");
+
+<% end %>
