@@ -2,11 +2,8 @@
 	<li>
 		<a href="/menus/<%= menu.id.to_s %>" >
 			<% if menu.starter %>
-			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).name  %> </div>
-			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).address + " "+@rest.city+" " +@rest.zipcode %> </div>
+
 			<div> <%= "Starter : " + menu.starter  %> </div>
-			<div> <%= "created at : " + menu.created_at.to_i.to_s %> </div>
-			<% end %>
 			<% if menu.main_course %>
 			<div> <%= "Main Course: " + menu.main_course %> </div>
 			<% end %>
@@ -16,5 +13,10 @@
 			<% if menu.cuisines %>
 			<div> <%= "Type of Cuisine: " + menu.cuisines %> </div>
 			<% end%>
+			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).name  %> </div>
+			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).address + " "+@rest.city+" " +@rest.zipcode %> </div>
+			<div> <%= "created at : " + menu.created_at.to_s %> </div>
+			<% end %>
+
 		</a>
 	</li>	

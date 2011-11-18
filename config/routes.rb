@@ -6,6 +6,7 @@ Hopnhog::Application.routes.draw do
   match '/ratings/show.js'  => "ratings#show"
   resources :menus
   resources :ratings
+
   root :to => "menus#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

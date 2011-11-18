@@ -1,10 +1,11 @@
 <div>
 <% @menu_id.each do |menu| %>
-	<b>Menu_id :  <%= menu.menu_id %>  </b></br>
-<%end%>
-<% @rating.each do |rating| %>
-    <% @menu = Menu.find_by_id(rating.menu_id) %>
-	<b> Rating Value :   <%= Menu.find_by_id(rating.menu_id).average_rating %> </b><br>
-	<b> Restaurant Name : <%= Restaurant.find(Menu.find_by_id(rating.menu_id).restaurant_id).name %> <br>
+
+
+    <% @menu = Menu.find_by_id(menu.menu_id) %>
+	<b> Restaurant Name : <%= Restaurant.find(@menu.restaurant_id).name %> <br>
+	<b> Rating Value :   <%= @menu.average_rating %> </b><br>
+	<b> Menu  : <%= @menu.starter+"," +@menu.main_course %> <br>
+	<%= "--------------------" %> <br>
 <%end%>
 </div>

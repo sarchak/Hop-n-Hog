@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-
+  before_filter :authenticate_user!
   def index
      
       if(params[:address].present?)
@@ -23,6 +23,7 @@ class MenusController < ApplicationController
   end
   def new
     @menu = Menu.new
+    
   end
   def topn
     @menu  = Rating.order('value desc').limit(1);

@@ -1,8 +1,9 @@
 
 <% unless @menu.empty? %>
 
-	$('#menus').prepend("<%= escape_javascript(raw render(@menu))%>");
-
+	//$('#menus').prepend("<%= escape_javascript(raw render(@menu))%>").slideDown("slow");
+	$("<%= escape_javascript(raw render(@menu))%>").prependTo('#menus').hide().slideDown();
+	
 
 	$('#menus').data("id", <%= @menu.first.id %>)
 	$('#menus').data("time", <%= @menu.first.created_at.to_i %>)

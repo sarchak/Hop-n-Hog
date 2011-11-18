@@ -4,7 +4,9 @@ var curr="All";
 var globlongitude;
 var globlatitude;
 var address;
-
+var st = "Starter";
+var cnt = 0;
+var main = "Main Course"
 $(document).ready(function(){
 
 	   if(navigator.geolocation){
@@ -31,6 +33,7 @@ $(document).ready(function(){
 			var obj = data["ResultSet"]["Results"];
 			address =  obj[0]["line1"]+" "+obj[0]["city"]+" "+obj[0]["state"];
 			$.getScript("/menus.js?address="+address);
+				$.getScript("/ratings/show.js");
 		  }
 		});
 	  
@@ -83,7 +86,7 @@ $(document).ready(function(){
 
 $(function(){
 	if($("#menus").length > 0){
-		setTimeout(updateMenus, 10000)
+		setTimeout(updateMenus, 5000)
 	}
 });
 
@@ -92,8 +95,9 @@ function updateMenus(){
 	var after= $("#menus").data('time');
 	$.getScript("/menus.js?menu_id="+menu_id+"&after="+after+"&address="+address);
 	$.getScript("/ratings/show.js");
-	setTimeout(updateMenus, 10000);
 	
+	setTimeout(updateMenus, 5000);
+
 }
 
 
@@ -102,8 +106,6 @@ $(document).ready(function(){
 
 	$("#menus li").live("click", function(){
 		var ind = $(this).index();
-	   	//alert(" Hi, I'm element " + $(this).index() );
-		
-		
+
 	});
 })

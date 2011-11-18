@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_filter :authenticate_restaurant!
   def index
     if restaurant_signed_in?
       @restaurant = Restaurant.find_by_email(current_restaurant.email)
