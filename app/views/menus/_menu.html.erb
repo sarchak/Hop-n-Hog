@@ -1,21 +1,24 @@
 <% @rest = Restaurant.find(menu.restaurant_id) %>
 	<li>
 		<a href="/menus/<%= menu.id.to_s %>" >
+			<h3>
 			<% if menu.starter %>
 
-			<div> <%= "Starter : " + menu.starter  %> </div>
-			<% if menu.main_course %>
-			<div> <%= "Main Course: " + menu.main_course %> </div>
-			<% end %>
+			<div> <%=  menu.starter + "," + menu.main_course   %> 
+
 			<% if menu.desserts %>
-			<div> <%= "Desserts: " + menu.desserts %> </div>
+		       <%= menu.desserts %> 
+			
 			<% end%>
+		    <%= "@" + Restaurant.find(menu.restaurant_id).name  %> </div>
 			<% if menu.cuisines %>
+			</h3>
 			<div> <%= "Type of Cuisine: " + menu.cuisines %> </div>
 			<% end%>
-			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).name  %> </div>
+			
 			<div> <%= "Restaurant Address : " + Restaurant.find(menu.restaurant_id).address + " "+@rest.city+" " +@rest.zipcode %> </div>
-			<div> <%= "created at : " + menu.created_at.to_s %> </div>
+			<div> <%= "Created at : " + menu.created_at.to_s %> </div>
+	 	    Average Menu Rating :	<%= menu.average_rating%>
 			<% end %>
 
 		</a>
