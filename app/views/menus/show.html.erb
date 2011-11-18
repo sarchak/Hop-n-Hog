@@ -1,25 +1,28 @@
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "rating-ballot.js" %>
+  <%= javascript_include_tag "showmenu.js" %>
+  <%= javascript_include_tag "jquery.BgImageTransition.js" %>
+
 <% end %>
-<div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>">
-<p>
-	<b> Starter : <%= @menu.starter %></b><br>
-	<b> Id      : <%= @menu.id %></b><br>
-	<b> Created_at : <%= @menu.created_at.to_i %></b><br>
-</p>
-<p>
-	<b> Main Course : <%= @menu.main_course %> </b><br>
-</p>
-<p>	
-	<b> Desserts: <%= @menu.desserts %></b><br>
-</p>
-<p>
-	<b> Menu id : <%= @menu.id %></b><br>
-</p>
-<p>
-	<b> Restaurant id : <%= @menu.restaurant_id %></b><br>
-</p>
-<a href = /menus/<%= @menu.id %>/edit >EDIT </a>
+
+<div class="menudisp">
+
+
+	
+<div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>"   background-image: url("Appetizers.jpg")>
+
+
+
+	<div id="started" data-url=<%= @menu.id%>><b> <%= @menu.starter %></b>
+
+	,<b> <%= @menu.main_course %> </b>
+
+	,<b> <%= @menu.desserts %></b>  
+
+	<b> @ <%= Restaurant.find_by_id(@menu.restaurant_id).name %></b> , <%= Restaurant.find_by_id(@menu.restaurant_id).city %>
+	</div>
+	<div class="containershow" >
+	<div  class ="dish"> </div></div>
 </div>
 <%= form_for(rating_ballot, :html => { :class => 'rating_ballot' }) do |f| %>
     <%= f.label("value_1", content_tag(:span, '1'), {:class=>"rating", :id=>"1"}) %>
@@ -45,3 +48,4 @@
 </tr></table>
 </section>
 
+</div>

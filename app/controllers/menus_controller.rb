@@ -8,7 +8,7 @@ class MenusController < ApplicationController
          @currloc = "630 park view drive santa clara"
       end
 
-      @menu = Menu.near(@currloc).where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(20);
+      @menu = Menu.near(@currloc).where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(5);
 
   end
   def sidebar
@@ -43,5 +43,6 @@ class MenusController < ApplicationController
   end
   def show
     @menu = Menu.find(params[:id])
+    @urlimg = "url(\"+ @menu.id.jpg + \")"
   end
 end
