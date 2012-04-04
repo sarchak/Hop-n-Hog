@@ -8,7 +8,9 @@ class MenusController < ApplicationController
          @currloc = "630 park view drive santa clara"
       end
 
-      @menu = Menu.near(@currloc).where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(5);
+      #@menu = Menu.near(@currloc).where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(5);
+
+      @menu = Menu.where("created_at > ?", Time.at(params[:after].to_i+1)).order('created_at desc').limit(5);
 
   end
   def sidebar
@@ -18,7 +20,8 @@ class MenusController < ApplicationController
        @currloc = "630 park view drive santa clara"
     end
     if(params[:cuisines].present?)
-      @menu=Menu.near(@currloc).where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);
+      #@menu=Menu.near(@currloc).where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);
+      @menu=Menu.where("cuisines == ?",params[:cuisines]).order('created_at desc').limit(20);
     end
   end
   def new

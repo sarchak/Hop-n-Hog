@@ -1,7 +1,7 @@
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "rating-ballot.js" %>
   <%= javascript_include_tag "showmenu.js" %>
-  <%= javascript_include_tag "jquery.BgImageTransition.js" %>
+
 
 <% end %>
 
@@ -9,7 +9,7 @@
 
 
 	
-<div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>"   background-image: url("Appetizers.jpg")>
+<div id="menus"  data-id="<%= @menu.id %>" data-time="<%= @menu.created_at.to_i %>" >
 
 
 
@@ -22,7 +22,7 @@
 	<b> @ <%= Restaurant.find_by_id(@menu.restaurant_id).name %></b> , <%= Restaurant.find_by_id(@menu.restaurant_id).city %>
 	</div>
 	<div class="containershow" >
-	<div  class ="dish"> </div></div>
+	<div  class ="dish"></div></div>
 </div>
 <%= form_for(rating_ballot, :html => { :class => 'rating_ballot' }) do |f| %>
     <%= f.label("value_1", content_tag(:span, '1'), {:class=>"rating", :id=>"1"}) %>
