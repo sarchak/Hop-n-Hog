@@ -5,7 +5,7 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 gem 'rake', '0.9.2.2'
-gem 'sqlite3'
+gem 'sqlite3', '1.3.5'
 gem 'geocoder'
 gem 'json'
 
